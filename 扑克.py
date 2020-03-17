@@ -1,42 +1,44 @@
 import random
-a = "?"
-b = "?"
-c = "?"
-d = "?"
-A = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
-for i in range(len(A)):
-    A[i] = a + A[i]
-B = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
-for i in range(len(B)):
-    B[i] = b + B[i]
-C = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
-for i in range(len(C)):
-    C[i] = c + C[i]
-D = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
-for i in range(len(D)):
-    D[i] = d + D[i]
+a = "â™¥"
+b = "â™¥"
+c = "â™£"
+d = "â™¦"//å››ç§èŠ±è‰²
+ç¼–å· = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
+A = []
+for i in range(len(ç¼–å·)-1):
+    A.append(a + ç¼–å·[i])//çº¢æ¡ƒèŠ±è‰²çš„ç‰Œç»„
+B = []
+for i in range(len(ç¼–å·)-1):
+    B.append(a + ç¼–å·[i])//é»‘æ¡ƒèŠ±è‰²çš„ç‰Œç»„
+C = []
+for i in range(len(ç¼–å·)-1):
+    C.append(a + ç¼–å·[i])//æ¢…èŠ±èŠ±è‰²çš„ç‰Œç»„
+D = []
+for i in range(len(ç¼–å·)-1):
+    D.append(a + ç¼–å·[i])//æ–¹ç‰‡èŠ±è‰²çš„ç‰Œç»„
 Kings = ["Joker","JOKER"]
-ÅÆ×é = A + A + B + B + C + C + D + D + Kings + Kings
-print(ÅÆ×é)
-def ÃşÅÆ():
-    S1 = random.sample(ÅÆ×é,25)
+ç‰Œç»„ = A + A + B + B + C + C + D + D + Kings + Kings
+//æ¯å¥—é¢œè‰²çš„ç‰Œç»„åˆåœ¨ä¸€èµ·å†åŠ ä¸¤ä¸ªç‹
+
+def æ‘¸ç‰Œ():
+    S1 = random.sample(ç‰Œç»„,25)//æ¯ä¸ªç©å®¶æ‘¸å–25å¼ ç‰Œ
     for i in S1:
-        ÅÆ×é.remove(i)
-    S2 = random.sample(ÅÆ×é,25)
+        ç‰Œç»„.remove(i)//ç‰Œç»„å‰©ä½™çš„ç‰Œ
+    S2 = random.sample(ç‰Œç»„,25)
     for i in S2:
-        ÅÆ×é.remove(i)
-    S3 = random.sample(ÅÆ×é,25)
+        ç‰Œç»„.remove(i)
+    S3 = random.sample(ç‰Œç»„,25)
     for i in S3:
-        ÅÆ×é.remove(i)
-    S4 = random.sample(ÅÆ×é,25)
+        ç‰Œç»„.remove(i)
+    S4 = random.sample(ç‰Œç»„,25)
     for i in S4:
-        ÅÆ×é.remove(i)
-    µ×ÅÆ = ÅÆ×é
+        ç‰Œç»„.remove(i)
+    åº•ç‰Œ = ç‰Œç»„//åº•ç‰Œå‰©ä½™8å¼ 
             
-    print("Íæ¼Ò1£º",S1)
-    print("Íæ¼Ò2£º",S2)
-    print("Íæ¼Ò3£º",S3)
-    print("Íæ¼Ò4£º",S4)
-    print("µ×ÅÆ:",µ×ÅÆ)
+    print("ç©å®¶1ï¼š",S1)
+    print("ç©å®¶2ï¼š",S2)
+    print("ç©å®¶3ï¼š",S3)
+    print("ç©å®¶4ï¼š",S4)
+    print("åº•ç‰Œ:",åº•ç‰Œ)
     
-ÃşÅÆ()
+æ‘¸ç‰Œ()
