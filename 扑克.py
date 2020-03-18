@@ -2,26 +2,14 @@
 //游戏中使用两副扑克共108张，每局四个玩家参与。
 //每个玩家从牌组里随机抓取25张牌，剩余8张作为底牌参与后续玩法。
 import random
-a = "♥"
-b = "♥"
-c = "♣"
-d = "♦"//四种花色
+花色 = ["♥","♠","♣","♦"]
 编号 = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
-A = []
-for i in range(len(编号)-1):
-    A.append(a + 编号[i])//红桃花色的牌组
-B = []
-for i in range(len(编号)-1):
-    B.append(a + 编号[i])//黑桃花色的牌组
-C = []
-for i in range(len(编号)-1):
-    C.append(a + 编号[i])//梅花花色的牌组
-D = []
-for i in range(len(编号)-1):
-    D.append(a + 编号[i])//方片花色的牌组
+常规牌 = []
+for i in 花色:
+    for j in 编号:
+        常规牌.append(i + j)
 Kings = ["Joker","JOKER"]
-牌组 = A + A + B + B + C + C + D + D + Kings + Kings
-//每套颜色的牌组合在一起再加两个王
+牌组 = 常规牌 + Kings + 常规牌 + Kings
 
 def 摸牌():
     S1 = random.sample(牌组,25)//每个玩家摸取25张牌
