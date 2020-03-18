@@ -80,7 +80,7 @@ def step(zombie,human)://运行
     for x in zombie:
         move(x)
 
-    for x in human:
+    for y in human:
         move(y)
 
     return zombie,human
