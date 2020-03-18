@@ -1,21 +1,25 @@
+//è¿™æ˜¯ä¸€ä¸ªç–¾ç—…ä¼ æ’­æ¨¡å‹ã€‚ä¸€å¼€å§‹åªæœ‰ä¸€ä¸ªæ„ŸæŸ“è€…å’Œä¸€ç™¾ä¸ªå¥åº·äººï¼Œæ¯ä¸ªäººæ¯å¤©åªåœ¨è§„å®šä¸–ç•Œå†…ä¸åŠ¨æˆ–ç§»åŠ¨ä¸€æ ¼ã€‚
+//å½“æ„ŸæŸ“è€…å’Œå¥åº·äººå¤„åœ¨åŒä¸€åæ ‡æ—¶ä¼šæ„ŸæŸ“å¥åº·äººã€‚æ„ŸæŸ“è€…çš„æ²»æ„ˆå‡ ç‡æ˜¯1ä»¥å†…éšæœºçš„å°æ•°ï¼Œå¦‚æœæ²»æ„ˆå‡ ç‡å¤§äºæ²»æ„ˆå€¼åˆ™æ„ŸæŸ“è€…æ¢å¤ä¸ºå¥åº·äººã€‚
+//ç”»ä¸€å¼ åº¦è¿‡æœ€å¤§è¿è¡Œæ—¶é—´ä¹‹åæ‰€æœ‰äººçš„åˆ†å¸ƒå›¾å§ï¼
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-maxtime = 1000//×î´óÔËĞĞÊ±¼ä
-npeople = 100//½¡¿µÈËµÄÊıÁ¿
-remission = 0//ÖÎÓú¼¸ÂÊ
+maxtime = 1000//æœ€å¤§è¿è¡Œæ—¶é—´
+npeople = 100//å¥åº·äººçš„æ•°é‡
+remission = 0//æ²»æ„ˆå‡ ç‡
 sidelength = 40
 x = np.arange(0,sidelength+1,1)
 y = np.arange(0,sidelength+1,1)
-world = np.zeros([sidelength,sidelength])//È¦¶¨Ò»¸öÒÆ¶¯·¶Î§
+world = np.zeros([sidelength,sidelength])//åœˆå®šä¸€ä¸ªç§»åŠ¨èŒƒå›´
 
 human = np.zeros(npeople)
-coordinate_human = []//½¡¿µÈËµÄ×ø±ê
+coordinate_human = []//å¥åº·äººçš„åæ ‡
 for h in human:
-    coordinate_human.append([np.random.choice(x),np.random.choice(y)])//µÚÒ»ÌìËùÓĞÈËµÄËæ»ú×ø±ê
+    coordinate_human.append([np.random.choice(x),np.random.choice(y)])//ç¬¬ä¸€å¤©æ‰€æœ‰äººçš„éšæœºåæ ‡
 
-zombie_initial = [np.random.choice(x),np.random.choice(y)]//µÚÒ»¸ö¸ĞÈ¾ÕßµÄ×ø±ê
-coordinate_zombie = []//¸ĞÈ¾ÕßµÄ×ø±ê
+zombie_initial = [np.random.choice(x),np.random.choice(y)]//ç¬¬ä¸€ä¸ªæ„ŸæŸ“è€…çš„åæ ‡
+coordinate_zombie = []//æ„ŸæŸ“è€…çš„åæ ‡
 coordinate_zombie.append(zombie_initial)
 
 x = []
@@ -32,37 +36,37 @@ for n in coordinate_zombie:
 plt.plot(x1, y1, '.', color='lightgreen')
 plt.plot(x, y, '.', color='blue')
 plt.title('The first day for initial locations')
-plt.show() //»­³öµÚÒ»ÌìËùÓĞ½¡¿µÈËºÍ¸ĞÈ¾ÕßµÄ·Ö²¼Í¼
+plt.show() //ç”»å‡ºç¬¬ä¸€å¤©æ‰€æœ‰å¥åº·äººå’Œæ„ŸæŸ“è€…çš„åˆ†å¸ƒå›¾
 
-def move(x)://µ¥´ÎÒÆ¶¯
+def move(x)://å•æ¬¡ç§»åŠ¨
     list40 = [-1,-1,0]
     list0 = [0,1,1]
-    rand_move = [-1,0,1] //·¶Î§ÄÚÒÆ¶¯
+    rand_move = [-1,0,1] //èŒƒå›´å†…ç§»åŠ¨
     for i in range(1):
         if x[i] >= 40:
-            x[i] += int(np.random.choice(list40))//Èç¹ûÒÆ¶¯ºó×ø±ê´óÓÚ40Ôò±ØĞëºóÍË»òÔ­µØ²»¶¯
+            x[i] += int(np.random.choice(list40))//å¦‚æœç§»åŠ¨ååæ ‡å¤§äº40åˆ™å¿…é¡»åé€€æˆ–åŸåœ°ä¸åŠ¨
         elif x[i] <= 0 :
-            x[i] += int(np.random.choice(list0))//Èç¹ûÒÆ¶¯ºó×ø±êĞ¡ÓÚ0Ôò±ØĞëÇ°½ø»òÕßÔ­µØ²»¶¯
+            x[i] += int(np.random.choice(list0))//å¦‚æœç§»åŠ¨ååæ ‡å°äº0åˆ™å¿…é¡»å‰è¿›æˆ–è€…åŸåœ°ä¸åŠ¨
         else:    
-            x[i] += int(np.random.choice(rand_move))//Èç¹ûÒÆ¶¯ºó²»³¬³ö·¶Î§Ôò²»±ä
+            x[i] += int(np.random.choice(rand_move))//å¦‚æœç§»åŠ¨åä¸è¶…å‡ºèŒƒå›´åˆ™ä¸å˜
     return x
 
-def step(zombie,human)://ÔËĞĞ
-    new = []//ĞÂÉú¸ĞÈ¾Õß
+def step(zombie,human)://è¿è¡Œ
+    new = []//æ–°ç”Ÿæ„ŸæŸ“è€…
     for i in range(len(zombie)):
         for j in range(len(human)):
             each_zombie = [zombie[i][0],zombie[i][1]]
             each_human = [human[j][0],human[j][1]]
 
             if each_zombie == each_human:
-                new.append(j)//µ±¸ĞÈ¾ÕßºÍ½¡¿µÈËÔÚÍ¬Ò»×ø±êÊ±½¡¿µÈË±»¸ĞÈ¾
+                new.append(j)//å½“æ„ŸæŸ“è€…å’Œå¥åº·äººåœ¨åŒä¸€åæ ‡æ—¶å¥åº·äººè¢«æ„ŸæŸ“
 
     for n in new:
         new_zombie = human[n]
-        human.remove(new_zombie)//±»¸ĞÈ¾Õß´Ó½¡¿µÈËÁĞ±íÖĞÒÆ³ı
-        zombie.append(new_zombie)//±»¸ĞÈ¾Õß¼ÓÈë¸ĞÈ¾ÕßÁĞ±í
+        human.remove(new_zombie)//è¢«æ„ŸæŸ“è€…ä»å¥åº·äººåˆ—è¡¨ä¸­ç§»é™¤
+        zombie.append(new_zombie)//è¢«æ„ŸæŸ“è€…åŠ å…¥æ„ŸæŸ“è€…åˆ—è¡¨
         
-    reborn = [] //ÖÎÓú
+    reborn = [] //æ²»æ„ˆ
     for i in range(len(zombie)):
         a = np.random.random(1)
         if a < remission:
