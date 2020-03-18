@@ -1,5 +1,5 @@
 //这是一个疾病传播模型。一开始只有一个感染者和一百个健康人，每个人每天只在规定世界内不动或移动一格。
-//当感染者和健康人处在同一坐标时会感染健康人。感染者的治愈几率是1以内随机的小数，如果治愈几率大于治愈值则感染者恢复为健康人。
+//当感染者和健康人处在同一坐标时会感染健康人。感染者的治愈几率是1以内随机的小数，如果治愈几率小于治愈值则感染者恢复为健康人。
 //画一张度过最大运行时间之后所有人的分布图吧！
 
 import numpy as np
@@ -68,27 +68,27 @@ def step(zombie,human)://运行
         
     reborn = [] //治愈
     for i in range(len(zombie)):
-        a = np.random.random(1)
+        a = np.random.random(1)//随机的治愈值
         if a < remission:
-            reborn.append(i)
+            reborn.append(i)//当治愈几率小于治愈值时，感染者恢复为健康人
     
     for j in reborn:
         new_human = reborn[j]
-        zombie.remove(new_human)
-        human.append(new_human)
+        zombie.remove(new_human)//恢复者从感染者列表中移除
+        human.append(new_human)//恢复者加入健康人列表
 
     for x in zombie:
-        move(x)
+        move(x)//感染者的移动
 
     for y in human:
-        move(y)
+        move(y)//健康人的移动
 
     return zombie,human
 
 maxtime = 1000
 
 for day in range(maxtime):
-    step(coordinate_zombie,coordinate_human)
+    step(coordinate_zombie,coordinate_human)//运行最大天数次数的移动
 
 a = []
 b = []
