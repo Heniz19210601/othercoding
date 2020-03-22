@@ -48,7 +48,7 @@ def move(x):##单次移动
     if x[0] <= 0:
         x[0] += int(move0)##移动后x坐标小于0则必须前进或者原地不动
         if int(move0) == 0:##如果x坐标不移动则考虑y坐标移动
-            if x[1] <= 40:
+            if x[1] <= 0:
                 x[1] += int(np.random.choice(list0))
             elif x[1] >= 40:
                 x[1] += int(np.random.choice(list40))
@@ -57,7 +57,7 @@ def move(x):##单次移动
     elif x[0] >= 40:
         x[0] += int(move40)##移动后x坐标大于40则必须后退或原地不动
         if int(move40) == 0:##如果x坐标不移动则考虑y坐标移动
-            if x[1] <= 40:
+            if x[1] <= 0:
                 x[1] += int(np.random.choice(list0))
             elif x[1] >= 40:
                 x[1] += int(np.random.choice(list40))
@@ -66,7 +66,7 @@ def move(x):##单次移动
     else:    
         x[0] += int(move_normal)##移动后不超出范围
         if int(move_normal) == 0:##如果x坐标不移动则考虑y坐标移动
-            if x[1] <= 40:
+            if x[1] <= 0:
                 x[1] += int(np.random.choice(list0))
             elif x[1] >= 40:
                 x[1] += int(np.random.choice(list40))
