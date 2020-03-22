@@ -74,39 +74,34 @@ def move(x):##单次移动
                 x[1] += int(np.random.choice(list_all))
     return x
 
-def step(zombie,human):##运行
-    new = []##新生感染者
-    for i in range(len(zombie)):
-        for j in range(len(human)):
-            each_zombie = [zombie[i][0],zombie[i][1]]
-            each_human = [human[j][0],human[j][1]]
-
-            if each_zombie == each_human:
-                new.append(j)##当感染者和健康人在同一坐标时健康人被感染
-
-    for n in new:
-        new_zombie = human[n]
-        human.remove(new_zombie)##被感染者从健康人列表中移除
-        zombie.append(new_zombie)##被感染者加入感染者列表
+def step(coordinate_zombie,coordinate_human):
+    for i in range(len(coordinate_zombie)-1):
+        for j in range(len(coordinate_human)-1):
+            each_zombie = [coordinate_zombie[i][0],coordinate_zombie[i][1]]
+            each_human = [coordinate_human[j][0],coordinate_human[j][1]]
+            
+            if each_zombie == each_human:##判定是否有健康人和感染者在同一坐标
+                coordinate_human.remove(each_zombie)
+                coordinate_zombie.append(each_human)##如果是则健康人被感染，从健康列表移除，加入感染者列表
         
-    reborn = [] ##治愈
-    for i in range(len(zombie)):
-        a = np.random.random(1)##随机的治愈值
+    reborn = []##治愈
+    for i in range(len(coordinate_zombie)):
+        a = np.random.random(1)
         if a < remission:
-            reborn.append(i)##当治愈几率小于治愈值时，感染者恢复为健康人
+            reborn.append(i)##当治愈几率小于治愈值时感染者恢复为健康人
     
     for j in reborn:
         new_human = reborn[j]
-        zombie.remove(new_human)##恢复者从感染者列表中移除
-        human.append(new_human)##恢复者加入健康人列表
+        zombie.remove(new_human)
+        human.append(new_human)##治愈者从感染者列表移除，加入健康人列表
+        
+    for x in coordinate_zombie:
+        move(x)
 
-    for x in zombie:
-        move(x)##感染者的移动
-
-    for y in human:
-        move(y)##健康人的移动
-
-    return zombie,human
+    for y in coordinate_human:
+        move(y)
+   
+    return coordinate_zombie,coordinate_human
 
 maxtime = 1000
 
